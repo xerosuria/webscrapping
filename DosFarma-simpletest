@@ -1,0 +1,10 @@
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+url = 'https://www.dosfarma.com/?q=caudalie&page=5&scroll=23515'
+page = requests.get(url)
+soup = BeautifulSoup(page.content, 'html.parser')
+product_name = soup.find('h1', {"class" : 'ebx-result-title ebx-result__title'})
+print(product_name)
+product_name = soup.find_all("strong.ebx-result-price__value")
+print(product_name)
